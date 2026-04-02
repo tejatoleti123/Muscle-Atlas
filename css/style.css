@@ -835,7 +835,7 @@ h1 {
     .hero-visual { display: none; }
     header h1 { font-size: clamp(2.5rem, 10vw, 3.5rem) !important; }
     
-    /* Mobile Navigation Fix */
+    /* Mobile Navigation & Layout Fix */
     nav {
         flex-direction: column;
         height: auto;
@@ -843,6 +843,12 @@ h1 {
         gap: 0.8rem;
         position: fixed;
     }
+    
+    /* Push content away from tall mobile nav */
+    header.muscle-hero, #hero { 
+        padding-top: 140px !important; 
+    }
+
     .nav-links {
         flex-wrap: wrap;
         justify-content: center;
