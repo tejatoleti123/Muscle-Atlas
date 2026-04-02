@@ -1049,24 +1049,24 @@ h1 {
 }
 
 .muscle-card > * {
-    transform: translateZ(0px);
+    transform: translateY(0) scale(1);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .muscle-card:hover .muscle-icon {
-    transform: translateZ(50px) scale(1.1);
+    transform: translateY(-8px) scale(1.1);
 }
 
 .muscle-card:hover h3 {
-    transform: translateZ(40px);
+    transform: translateY(-5px) scale(1.03);
 }
 
 .muscle-card:hover p {
-    transform: translateZ(30px);
+    transform: translateY(-3px);
 }
 
 .muscle-card:hover .card-cta {
-    transform: translateZ(45px);
+    transform: translateY(-4px) scale(1.05);
 }
 
 .glass-card::after {
