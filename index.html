@@ -314,7 +314,18 @@
                 font-size: clamp(2rem, 8vw, 3rem) !important;
                 line-height: 1.2;
             }
-            .title-row { flex-wrap: wrap; text-align: center; }
+            .title-row { flex-wrap: wrap; text-align: center; justify-content: center; }
+            .title-ornament { display: none; } /* Hide horizontal decorators that break mobile flow */
+            
+            #magic-title {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.2rem;
+            }
+            
+            .title-spacer { display: none !important; } /* Eliminate the horizontal spacer on mobile */
+            
             .epic-btn { 
                 padding: 1rem 2rem !important; 
                 font-size: 0.9rem !important;
@@ -421,7 +432,7 @@
                         <span class="magic-letter" style="--i:4">L</span>
                         <span class="magic-letter" style="--i:5">E</span>
                     </span>
-                    <span style="margin-right: 1.5rem; display: inline-block;"></span> 
+                    <span class="title-spacer" style="margin-right: 1.5rem; display: inline-block;"></span> 
                     <span style="display: inline-block; white-space: nowrap;">
                         <span class="magic-letter" style="--i:6">A</span>
                         <span class="magic-letter" style="--i:7">T</span>
