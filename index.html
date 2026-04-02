@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muscle Atlas | Premium Fitness Education</title>
+    <meta name="description" content="Master your physique with Muscle Atlas. The definitive guide to muscle muscle, movement patterns, and science-backed training.">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ═══════════════════════════════════
+           HERO LAYOUT & INTERACTIVE BG
+        ═══════════════════════════════════ */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        /* ── MUSCLE ATLAS Professional Theme ── */
+        .title-row {
+            display: flex; align-items: center; justify-content: center;
+            gap: 1.4rem; width: 100%; margin-bottom: 2rem;
+            perspective: 2000px; transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .luxury-title {
+            font-size: clamp(2.8rem, 5.5vw, 6.5rem);
+            white-space: nowrap; font-weight: 900;
+            letter-spacing: 12px; text-transform: uppercase;
+            color: #d4af37 !important; /* Constant Gold */
+            position: relative; display: inline-block;
+            transform-style: preserve-3d;
+            animation: initialFlip 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        .magic-letter {
+            display: inline-block; position: relative;
+            color: #d4af37 !important;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .luxury-title:hover .magic-letter {
+            transform: rotateY(360deg) scale(1.15) translateZ(40px);
+        }
+
+        /* ── EXPLORE BUTTON (High-Fidelity Magic) ── */
+        .epic-btn {
+            position: relative;
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: #050505 !important;
+            color: #d4af37 !important;
+            font-weight: 900; font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem; text-transform: uppercase;
+            letter-spacing: 5px; border-radius: 4px;
+            text-decoration: none;
+            white-space: nowrap !important; /* Forces single line */
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 2px solid rgba(212, 175, 55, 0.4) !important; 
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
+            z-index: 10;
+            animation: ctaPowerFlip 1.2s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        /* Diagnostic Brackets */
+        .epic-btn::before, .epic-btn::after {
+            content: '';
+            position: absolute;
+            width: 15px; height: 15px;
+            border: 2px solid #d4af37;
+            opacity: 0.6;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Top Left and Bottom Right */
+        .epic-btn::before { top: -5px; left: -5px; border-right: 0; border-bottom: 0; }
+        .epic-btn::after { bottom: -5px; right: -5px; border-left: 0; border-top: 0; }
+
+        .epic-btn:hover {
+            transform: translateY(-12px) scale(1.04);
+            letter-spacing: 15px; /* Dramatic Physical Expansion */
+            box-shadow: 0 0 100px rgba(212, 175, 55, 0.3), inset 0 0 20px rgba(212, 175, 55, 0.1);
+            border-color: #d4af37 !important;
+        }
+
+        .epic-btn:hover::before { transform: translate(-10px, -10px) scale(1.3); opacity: 1; }
+        .epic-btn:hover::after { transform: translate(10px, 10px) scale(1.3); opacity: 1; }
+
+        @keyframes initialFlip {
+            0%   { opacity: 0; transform: rotateX(-90deg) translateY(30px); }
+            100% { opacity: 1; transform: rotateX(0deg) translateY(0); }
+        }
+
+        @keyframes ctaPowerFlip {
+            0%   { opacity: 0; transform: rotateX(90deg) translateY(40px); }
+            100% { opacity: 1; transform: rotateX(0deg) translateY(0); }
+        }
+
+        .btn-inner {
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-parallax-text {
+            display: inline-block;
+            transition: transform 0.2s linear;
+        }
+
+        .btn-parallax-text {
+            display: inline-block;
+            transition: transform 0.2s linear;
+        }
+
+        @keyframes sheerSweep {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        /* OVERRIDDEN */ .old-luxury-title {
+            font-size: clamp(3.5rem, 7vw, 7.5rem);
+            line-height: 1.05;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.4rem;
+            background: linear-gradient(to right, #C9A227 0%, #FFF3B0 25%, #FFD700 50%, #FFF3B0 75%, #C9A227 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShine 8s linear infinite;
+            filter: drop-shadow(0px 0px 15px rgba(255, 215, 0, 0.2));
+            font-weight: 800;
+        }
+
+        @keyframes textShine {
+            to {
+                background-position: 200% center;
+            }
+        }
+        
+        /* ── CREATOR SIGNATURE (Luxury Style) ── */
+        .magic-creator-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(212, 175, 55, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 10px 24px;
+            border-radius: 40px;
+            color: #d4af37 !important;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .magic-creator-tag::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+            animation: tagShine 4s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        }
+
+        @keyframes tagShine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        .magic-creator-tag:hover {
+            transform: translateY(-5px);
+            letter-spacing: 7px;
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.08);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        .sparkle {
+            width: 4px; height: 4px;
+            background: #d4af37;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #d4af37;
+            transition: all 0.5s;
+        }
+
+        .magic-creator-tag:hover .sparkle {
+            transform: scale(1.5);
+            box-shadow: 0 0 20px #d4af37;
+        }
+
+        /* ── Center content ── */
+        .hero-center {
+            z-index: 5;
+            text-align: center;
+            padding: 0 2vw;
+            max-width: 600px;
+        }
+
+        .hero-center h1 {
+            font-size: clamp(2.8rem, 5vw, 6.5rem);
+            line-height: 1.0;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 1.4rem;
+        }
+
+        .hero-center p {
+            font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+            color: var(--text-secondary);
+            line-height: 1.85;
+            max-width: 500px;
+            margin: 0 auto 2.4rem;
+        }
+
+        /* Stat bar under CTA */
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--accent-color), #FFF3B0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .hero-stat-lbl {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Scroll indicator */
+        .scroll-hint {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.2);
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+
+        .scroll-hint-line {
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(to bottom, rgba(201, 162, 39, 0.8), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50%       { opacity: 0.9; transform: scaleY(1.15); }
+        }
+
+        /* ── Cards ─────────────────────────── */
+        #atlas .glass-card:nth-child(1) { --delay: 0.05s; }
+        #atlas .glass-card:nth-child(2) { --delay: 0.12s; }
+        #atlas .glass-card:nth-child(3) { --delay: 0.19s; }
+        #atlas .glass-card:nth-child(4) { --delay: 0.26s; }
+        #atlas .glass-card:nth-child(5) { --delay: 0.33s; }
+        #atlas .glass-card:nth-child(6) { --delay: 0.40s; }
+        .card-cta { margin-top: auto; padding-top: 1.4rem; font-weight: 700; font-size: 0.72rem;
+            display: flex; align-items: center; gap: 0.5rem; color: var(--accent-color);
+            text-transform: uppercase; letter-spacing: 1.5px; transition: var(--transition-fast); }
+        .glass-card:hover .card-cta { gap: 0.9rem; color: var(--highlight-gold); text-shadow: 0 0 10px rgba(255,243,176,0.3); }
+        .card-cta span { font-size: 1.1rem; }
+        #atlas .glass-card { display: flex; flex-direction: column; }
+        #atlas .glass-card p { flex: 1; }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            #hero {
+                padding-top: var(--nav-height);
+            }
+            .hero-center { padding: 2rem 5%; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background depth system -->
+    <div class="bg-visuals" aria-hidden="true"></div>
+    <div class="bg-ambient-glow" aria-hidden="true"></div>
+    <div class="ambient-lighting" aria-hidden="true"></div>
+    
+    <!-- Global Cinematic Magic Canvas (Automated by cinematic.js) -->
+
+    <nav>
+        <a href="index.html" class="logo">MUSCLE ATLAS</a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link active">Overview</a></li>
+            <li><a href="index.html#atlas" class="nav-link">Muscle Guide</a></li>
+            <li><a href="nutrition.html" class="nav-link">Nutrition</a></li>
+            <li><a href="mailto:tejatoleti12@gmail.com?subject=Muscle%20Atlas%20Feedback" id="feedback-btn" class="btn btn-pill-glow">Send Feedback</a></li>
+        </ul>
+    </nav>
+
+    <header id="hero" style="background: linear-gradient(rgba(2, 2, 2, 0.45) 0%, rgba(2, 2, 2, 0.95) 100%), url('assets/hero_bg.png'); background-size: cover; background-position: center; background-attachment: fixed;">
+    
+        
+        
+        <!-- Localized Center-Emitter Canvas -->
+        
+        
+
+        
+        
+        
+        <!-- Technical Biomechanical Data Graphics -->
+        <div class="hero-tech-ornaments" style="position: absolute; inset: 0; pointer-events: none; opacity: 0.15; z-index: 1;">
+            <!-- Circular Tech Grid -->
+            <svg viewBox="0 0 200 200" style="position:absolute; top:50%; left:50%; width:900px; height:900px; transform:translate(-50%,-50%); animation: slowSpin 80s linear infinite;">
+                <circle cx="100" cy="100" r="95" fill="none" stroke="#d4af37" stroke-width="0.1" stroke-dasharray="1 3"/>
+                <circle cx="100" cy="100" r="85" fill="none" stroke="#d4af37" stroke-width="0.05"/>
+                <path d="M100,5 L100,15 M195,100 L185,100 M100,195 L100,185 M5,100 L15,100" stroke="#d4af37" stroke-width="0.5"/>
+            </svg>
+            
+            <!-- Floating Data Labels -->
+            <div style="position:absolute; top:35%; left:20%; color:var(--accent-color); font-size:0.6rem; letter-spacing:2px; font-weight:700; transform:rotate(-90deg); opacity:0.6;">DENSITY MAP: V-0.8</div>
+            <div style="position:absolute; bottom:25%; right:15%; color:var(--accent-color); font-size:0.6rem; letter-spacing:2px; font-weight:700; opacity:0.6;">KINETIC FORCE: 1450N</div>
+            <div style="position:absolute; top:20%; right:25%; color:var(--accent-color); font-size:10px; opacity:0.4;">
+                <svg width="60" height="20">
+                    <path d="M0,10 L10,2 L20,15 L30,5 L40,18 L50,10" fill="none" stroke="currentColor" stroke-width="1"/>
+                </svg>
+                <div style="margin-top:4px;">ANABOLIC PHASE: ACTIVE</div>
+            </div>
+        </div>
+
+        <div class="hero-glass-core" style="position:absolute; top:50%; left:50%; width:800px; height:800px; transform:translate(-50%,-50%); pointer-events:none; z-index:0; opacity:0.18; filter: blur(1px) drop-shadow(0 0 20px rgba(212, 175, 55, 0.1));">
+            <!-- Intense ambient sub-glow -->
+            <div style="position:absolute; top:50%; left:50%; width:300px; height:300px; transform:translate(-50%,-50%); background:radial-gradient(circle, rgba(201,162,39,0.15) 0%, transparent 70%); border-radius:50%; animation: pulseCore 4s infinite alternate;"></div>
+            
+            <svg viewBox="0 0 200 200" width="100%" height="100%" style="animation: slowSpin 40s linear infinite;">
+                <defs>
+                    <linearGradient id="goldGradCore" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#FFD700" />
+                        <stop offset="50%" stop-color="#FFF3B0" />
+                        <stop offset="100%" stop-color="#C9A227" />
+                    </linearGradient>
+                </defs>
+                <polygon points="100,10 185,55 185,145 100,190 15,145 15,55" fill="none" stroke="url(#goldGradCore)" stroke-width="1.2"/>
+                <circle cx="100" cy="100" r="75" fill="none" stroke="url(#goldGradCore)" stroke-width="1.2" stroke-dasharray="2 6"/>
+                <polygon points="100,25 165,65 165,135 100,175 35,135 35,65" fill="none" stroke="url(#goldGradCore)" stroke-width="0.9" style="animation: reverseSpin 50s linear infinite; transform-origin: 100px 100px;"/>
+            </svg>
+            <style>
+                @keyframes slowSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+                @keyframes reverseSpin { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+                @keyframes pulseCore { from { transform: translate(-50%,-50%) scale(1); opacity: 0.5; } to { transform: translate(-50%,-50%) scale(1.3); opacity: 0.9; } }
+            </style>
+        </div>
+        
+
+
+
+        
+        
+        
+        
+
+        <div class="hero-center" style="z-index: 10; position: relative;">
+            <div class="title-row">
+                <div class="title-ornament">
+                    <div class="ornament-line"></div>
+                    <div class="ornament-diamond"></div>
+                </div>
+                <h1 id="magic-title" class="luxury-title" data-text="MUSCLE ATLAS" style="margin-bottom:0;">
+                    <span class="magic-letter" style="--i:0">M</span>
+                    <span class="magic-letter" style="--i:1">U</span>
+                    <span class="magic-letter" style="--i:2">S</span>
+                    <span class="magic-letter" style="--i:3">C</span>
+                    <span class="magic-letter" style="--i:4">L</span>
+                    <span class="magic-letter" style="--i:5">E</span>
+                    <span style="margin-right: 2rem;"></span> 
+                    <span class="magic-letter" style="--i:6">A</span>
+                    <span class="magic-letter" style="--i:7">T</span>
+                    <span class="magic-letter" style="--i:8">L</span>
+                    <span class="magic-letter" style="--i:9">A</span>
+                    <span class="magic-letter" style="--i:10">S</span>
+                </h1>
+                <div class="title-ornament">
+                    <div class="ornament-diamond"></div>
+                    <div class="ornament-line"></div>
+                </div>
+            </div>
+            <div style="margin-bottom: 2rem; opacity: 0.95; position: relative; display: inline-block;">
+                <span class="magic-creator-tag">
+                    <span class="sparkle star-1"></span>
+                    <span class="sparkle star-2"></span>
+                    Built by Teja Toleti
+                    <span class="sparkle star-3"></span>
+                </span>
+            </div>
+            <p class="hero-sub" style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; max-width: 600px; margin: 0 auto; margin-bottom: 2.5rem; letter-spacing: 1px; font-weight:500; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
+                The definitive guide to human movement, structural hypertrophy, and biomechanical excellence.
+            </p>
+            <div style="display:flex; justify-content:center; gap:1.5rem; margin-top:2rem;">
+                <a href="#atlas" class="epic-btn intro-blink-box">
+                    <span class="btn-inner">Explore The Atlas</span>
+                </a>
+            </div>
+            
+            <div class="hero-stats refined-matrix">
+                <div class="matrix-item">
+                    <span class="matrix-num fleet-num" data-final="6">6</span>
+                    <span class="matrix-lbl">Groups <span class="sub-detail">(7 Sections each)</span></span>
+                </div>
+                
+                <div class="matrix-item">
+                    <span class="matrix-num fleet-num" data-final="6">6</span>
+                    <span class="matrix-lbl">Nutrition Pillars</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-hint-line"></div>
+        </div>
+    </header>
+
+    <section id="atlas" class="container">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <h2 class="section-title" style="letter-spacing: 4px;">YOUR MUSCLE GUIDE</h2>
+            <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto;">Select an anatomical region to explore structural breakdowns, kinematics, and elite training protocols.</p>
+        </div>
+
+        <div class="grid-cols-3">
+            <!-- 1. Chest -->
+            <a href="muscles/chest.html" style="text-decoration:none;">
+                <div class="glass-card muscle-card" style="background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('assets/chest_art.png'); background-size: cover; background-position: center;">
+                    <div class="muscle-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M32 10 L32 54" stroke-dasharray="2 4"/>
+                            <path d="M12 20 C24 16, 30 20, 32 30 C34 20, 40 16, 52 20" />
+                            <path d="M16 28 C24 24, 28 30, 32 40 C36 30, 40 24, 48 28" />
+                            <rect x="8" y="10" width="48" height="44" rx="4" stroke-width="0.5" stroke="var(--highlight-gold)" opacity="0.3"/>
+                        </svg></div>
+                    <h3>Chest</h3>
+                    <p style="margin-bottom:0;">Horizontal pushing power. Primary Pectoralis major/minor development.</p>
+                    <div class="card-cta magic-btn">Explore Atlas Options <span style="font-size:1.4rem;">→</span></div>
+                </div>
+            </a>
+
+            <!-- 2. Back -->
+            <a href="muscles/back.html" style="text-decoration:none;">
+                <div class="glass-card muscle-card" style="background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('assets/back_art.png'); background-size: cover; background-position: center;">
+                    <div class="muscle-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M32 8 L32 56" stroke-width="2"/>
+                            <path d="M32 18 L16 32 L32 50 L48 32 Z" />
+                            <path d="M32 24 L22 34 L32 44 L42 34 Z" stroke="var(--highlight-gold)" opacity="0.6"/>
+                            <line x1="16" y1="32" x2="8" y2="28" opacity="0.5"/><line x1="48" y1="32" x2="56" y2="28" opacity="0.5"/>
+                        </svg></div>
+                    <h3>Back</h3>
+                    <p style="margin-bottom:0;">Vertical & Horizontal pulling. Latitudinal width and thickness.</p>
+                    <div class="card-cta magic-btn">Explore Atlas Options <span style="font-size:1.4rem;">→</span></div>
+                </div>
+            </a>
+
+            <!-- 3. Legs -->
+            <a href="muscles/legs.html" style="text-decoration:none;">
+                <div class="glass-card muscle-card" style="background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('assets/legs_art.png'); background-size: cover; background-position: center;">
+                    <div class="muscle-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10 L22 54 M42 10 L42 54" stroke-width="2"/>
+                            <path d="M22 24 C16 30, 16 40, 22 46 M42 24 C48 30, 48 40, 42 46" stroke="var(--highlight-gold)" opacity="0.8"/>
+                            <path d="M14 20 L22 20 M50 20 L42 20 M14 40 L22 40 M50 40 L42 40" opacity="0.3"/>
+                        </svg></div>
+                    <h3>Legs</h3>
+                    <p style="margin-bottom:0;">Foundational Pillars. Squatting, hinging, and power generation.</p>
+                    <div class="card-cta magic-btn">Explore Atlas Options <span style="font-size:1.4rem;">→</span></div>
+                </div>
+            </a>
+
+            <!-- 4. Shoulders -->
+            <a href="muscles/shoulders.html" style="text-decoration:none;">
+                <div class="glass-card muscle-card" style="background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('assets/shoulders_art.png'); background-size: cover; background-position: center;">
+                    <div class="muscle-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 32 C16 16, 48 16, 48 32" stroke-width="2"/>
+                            <path d="M24 32 C24 22, 40 22, 40 32" stroke="var(--highlight-gold)" opacity="0.8"/>
+                            <circle cx="16" cy="36" r="4"/><circle cx="48" cy="36" r="4"/><circle cx="32" cy="20" r="4"/>
+                        </svg></div>
+                    <h3>Shoulders</h3>
+                    <p style="margin-bottom:0;">3D Boulder Caps. Overhead press & abduction kinematics.</p>
+                    <div class="card-cta magic-btn">Explore Atlas Options <span style="font-size:1.4rem;">→</span></div>
+                </div>
+            </a>
+
+            <!-- 5. Core -->
+            <a href="muscles/core.html" style="text-decoration:none;">
+                <div class="glass-card muscle-card" style="background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('assets/core_art.png'); background-size: cover; background-position: center;">
+                    <div class="muscle-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="22" y="12" width="20" height="40" rx="4"/>
+                            <line x1="32" y1="12" x2="32" y2="52" stroke-width="2"/>
+                            <line x1="22" y1="26" x2="42" y2="26"/><line x1="22" y1="40" x2="42" y2="40"/>
+                            <path d="M16 20 C20 26, 20 40, 16 46 M48 20 C44 26, 44 40, 48 46" stroke="var(--highlight-gold)" opacity="0.5"/>
+                        </svg></div>
+                    <h3>Core</h3>
+                    <p style="margin-bottom:0;">Stabilization Engine. Spinal flexion and anti-rotation capacity.</p>
+                    <div class="card-cta magic-btn">Explore Atlas Options <span style="font-size:1.4rem;">→</span></div>
+                </div>
+            </a>
+
+            <!-- 6. Arms -->
+            <a href="muscles/arms.html" style="text-decoration:none;">
+                <div class="glass-card muscle-card" style="background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('assets/arms_art.png'); background-size: cover; background-position: top center;">
+                    <div class="muscle-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M24 16 C16 28, 16 36, 24 48 M40 16 C48 28, 48 36, 40 48" stroke-width="2"/>
+                            <path d="M20 28 Q32 32 44 28" stroke="var(--highlight-gold)" opacity="0.8"/>
+                            <line x1="32" y1="16" x2="32" y2="48" stroke-dasharray="2 4" opacity="0.5"/>
+                        </svg></div>
+                    <h3>Arms</h3>
+                    <p style="margin-bottom:0;">Precision Levers. Bicep flexion and Tricep extension force.</p>
+                    <div class="card-cta magic-btn">Explore Atlas Options <span style="font-size:1.4rem;">→</span></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Standalone Nutrition Section -->
+    <section id="nutrition" class="container content-section" style="margin-top: 4rem; margin-bottom: 6rem;">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <h2 class="section-title intro-blink-text" style="letter-spacing: 4px;">YOUR NUTRITION GUIDE</h2>
+        </div>
+
+        <a href="nutrition.html" style="text-decoration:none;">
+            <div class="glass-card" style="padding: 4rem; text-align: center; border: 1px solid rgba(212, 175, 55, 0.25); position: relative; overflow: hidden; background: linear-gradient(rgba(10, 10, 10, 0.5), rgba(5, 5, 5, 0.7)), url('assets/nutrition_art.png'); background-size: cover; background-position: center;">
+                <div style="position:relative; z-index:1;">
+                    <h3 style="font-size: 2rem; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: 4px;">EXPLORE PERFORMANCE PROTOCOLS</h3>
+                    <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem; margin-bottom: 3rem;">
+                        Detailed breakdowns of Creatine, Pre-workouts, Anabolic Windows, and the science of Systemic Recovery.
+                    </p>
+                    <div id="nutrition-btn" class="epic-btn intro-blink-box">
+                        <span class="btn-inner">Nutrition Guide →</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </section>
+    
+
+
+        <footer style="text-align: center; padding: 4rem 0; border-top: 1px solid rgba(212, 175, 55, 0.15); background: rgba(5,5,5,0.4); margin-top: 8rem;">
+        <div class="logo" style="margin-bottom: 1.5rem; letter-spacing: 4px; font-weight: 800; color: var(--accent-color);">MUSCLE ATLAS</div>
+        <p style="margin-bottom: 1rem; color: var(--text-secondary); opacity: 0.8;">&copy; 2026 Muscle Atlas. | The Standard in Human Performance Visualization.</p>
+        <p style="font-weight: 600; color: var(--accent-color); letter-spacing: 2px; font-size: 0.75rem; text-transform: uppercase;">Engineered by Teja Toleti</p>
+    </footer>
+
+    <!-- Static Navigation Elements -->
+    <div class="cinematic-atlas-ring"></div>
+    <div class="page-sweep"></div>
+    
+    <script src="js/main.js"></script>
+</body>
+
+</html>
