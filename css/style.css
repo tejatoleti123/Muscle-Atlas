@@ -1014,11 +1014,10 @@ h1 {
 
 /* 3D Parallax Depth for Muscle Cards */
 .muscle-card {
-    transform-style: preserve-3d;
-    perspective: 1200px;
+    perspective: 1200px; /* Perspective is enough for translateZ, preserve-3d causes severe overflow bugs in Chrome */
     position: relative;
     overflow: hidden;
-    -webkit-backface-visibility: hidden; /* Force GPU flattening to prevent iOS blanking glitch */
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transform: translate3d(0,0,0);
 }
