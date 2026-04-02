@@ -1013,7 +1013,7 @@ h1 {
     display: block;
     text-decoration: none;
     position: relative;
-    z-index: 1; /* Low base z-index */
+    /* Removed z-index restriction to align with pure glass-card behavior */
 }
 
 /* Base Stable Glass Card - Removed backdrop-filter to prevent browser layer crashes */
@@ -1036,29 +1036,20 @@ h1 {
     border-color: var(--accent-color);
 }
 
-/* Specific Muscle Card Stability */
+/* Specific Muscle Card Stability - Fully Synchronized to Glass Card */
 .muscle-card {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    will-change: transform;
 }
 
-/* Unified Glass Shake Animation - No rotation for absolute stability */
+/* Glass Vibration Keyframes - Fully Deprecated for Stability */
 @keyframes glassShake {
-    0% { transform: translateY(-10px) scale(1.02) translateX(0); }
-    15% { transform: translateY(-10px) scale(1.02) translateX(-3px); }
-    30% { transform: translateY(-10px) scale(1.02) translateX(3px); }
-    45% { transform: translateY(-10px) scale(1.02) translateX(-2px); }
-    60% { transform: translateY(-10px) scale(1.02) translateX(2px); }
-    100% { transform: translateY(-10px) scale(1.02) translateX(0); }
+    0%   { transform: translateY(-10px) scale(1.02); }
+    100% { transform: translateY(-10px) scale(1.02); }
 }
 
 /* Removed glassShake animation as per request for clean, unified hover consistency */
-.muscle-card:hover {
-    animation: none !important;
-}
-
-/* Individual Muscle Card Backdrops - Moved from HTML to prevent render collision */
+/* Removed all extra shake and scanline triggers for clean unified hover */
 .card-chest { background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('../assets/chest_art.png') !important; background-size: cover !important; background-position: center !important; }
 .card-back { background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('../assets/back_art.png') !important; background-size: cover !important; background-position: center !important; }
 .card-legs { background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('../assets/legs_art.png') !important; background-size: cover !important; background-position: center !important; }
@@ -1082,11 +1073,7 @@ h1 {
     transition: opacity 0.5s;
 }
 
-/* Removed muscleScan animation as per request for clean, unified hover consistency */
-.muscle-card:hover::before {
-    opacity: 0 !important;
-    animation: none !important;
-}
+/* Removed muscleScan animation */
 
 @keyframes muscleScan {
     0% { top: -100%; }
@@ -1099,12 +1086,7 @@ h1 {
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.muscle-card:hover .muscle-icon,
-.muscle-card:hover h3,
-.muscle-card:hover p,
-.muscle-card:hover .card-cta {
-    transform: none !important;
-}
+/* Removed all extra child transforms */
 
 .glass-card::after {
     content: '';
