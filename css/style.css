@@ -73,6 +73,19 @@ h1, h2, h3, h4, h5 {
     background: #020202; /* Total darkness for the gold swarm */
 }
 
+/* ───────────────────────────────────────
+   INTERACTIVE GRAVITY DOTS
+─────────────────────────────────────── */
+#gravity-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -50; /* Deepest background layer */
+    pointer-events: none; /* Let clicks pass through to the website */
+}
+
 .bg-ambient-glow {
     position: fixed;
     inset: 0;
