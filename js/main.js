@@ -16,12 +16,14 @@
         scale: 1,
         hovering: false
     };
-
     const init = () => {
-        // 1. Completely fresh, pure-JS cursor injection
-        // Remove any old static ones first to prevent duplicates
-        document.querySelectorAll('.muscle-cursor-ring, .cinematic-atlas-ring').forEach(el => el.remove());
-        
+        // 1. Mobile Efficiency Check: Disable custom cursor on touch devices for comfort
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth < 1024);
+        if (isTouchDevice) {
+            document.querySelectorAll('.muscle-cursor-ring, .cinematic-atlas-ring').forEach(el => el.remove());
+            return; // Exit early: Let mobile use native touch
+        }
+
         cursorRing = document.createElement('div');
         cursorRing.className = 'muscle-cursor-ring';
         // Base critical styles directly applied to guarantee they work everywhere perfectly
