@@ -978,7 +978,9 @@ h1 {
     border: 1px solid var(--border-color);
     border-radius: 8px; /* Smooth rounded corners */
     padding: 2rem;
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
 }
@@ -1004,6 +1006,13 @@ h1 {
     0% { filter: blur(2px) brightness(1); }
     50% { filter: blur(5px) brightness(1.5); }
     100% { filter: blur(2px) brightness(1); }
+}
+
+/* Fix inline anchor wrapping blocks causing rendering abortion */
+.grid-cols-3 a {
+    display: block;
+    text-decoration: none;
+    transform: translateZ(0); /* Force isolated compositor layer for the wrapper */
 }
 
 .glass-card:hover {
