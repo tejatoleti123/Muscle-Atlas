@@ -49,7 +49,7 @@
         // Setup Hovers
         document.querySelectorAll('a, button, .glass-card, .btn-pill-glow, .magic-btn').forEach(el => {
             el.addEventListener('mouseenter', () => {
-                state.scale = el.closest('.glass-card') ? 1.3 : 1.6;
+                state.scale = 1.3; // Uniform surgical scale for all interactions
                 state.hovering = true;
                 cursorRing.style.width = (12 * state.scale) + 'px';
                 cursorRing.style.height = (12 * state.scale) + 'px';
