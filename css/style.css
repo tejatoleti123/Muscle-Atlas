@@ -1008,38 +1008,53 @@ h1 {
     100% { filter: blur(2px) brightness(1); }
 }
 
-/* Fix inline anchor wrapping blocks causing rendering abortion */
+/* Fix redundant anchor wrapper transform stack */
 .grid-cols-3 a {
     display: block;
     text-decoration: none;
-    transform: translateZ(0); /* Force isolated compositor layer for the wrapper */
+    position: relative;
+    z-index: 1; /* Low base z-index */
+}
+
+/* Base Stable Glass Card - Removed backdrop-filter to prevent browser layer crashes */
+.glass-card {
+    background: rgba(15, 15, 15, 0.95); /* Solid nearly-black for stability */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: transform 0.3s cubic-bezier(0.17, 0.67, 0.83, 0.67), 
+                box-shadow 0.3s ease, 
+                border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .glass-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 45px rgba(255, 215, 0, 0.15), 0 0 25px rgba(201, 162, 39, 0.2);
-    border-color: rgba(255, 215, 0, 0.6);
+    z-index: 100; /* Move to top of stack when hovering */
+    background: rgba(20, 20, 20, 1) !important; /* Force solid color to prevent turning back to black background */
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(212, 175, 55, 0.2);
+    border-color: var(--accent-color);
 }
 
-/* 3D Parallax Depth for Muscle Cards */
+/* Specific Muscle Card Stability */
 .muscle-card {
-    perspective: 1200px;
-    position: relative;
-    overflow: hidden;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    transform: translate3d(0,0,0);
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    will-change: transform; /* Hardware Acceleration Lock */
+    will-change: transform;
 }
 
-/* Glass Vibration Keyframes */
-@keyframes glassVibrate {
-    0%   { transform: translateY(-8px) scale(1.02); }
-    25%  { transform: translateY(-8.5px) scale(1.021) rotate(0.1deg); }
-    50%  { transform: translateY(-7.5px) scale(1.019) rotate(-0.1deg); }
-    100% { transform: translateY(-8px) scale(1.02); }
+/* Unified Glass Shake Animation - No rotation for absolute stability */
+@keyframes glassShake {
+    0% { transform: translateY(-10px) scale(1.02) translateX(0); }
+    25% { transform: translateY(-10px) scale(1.02) translateX(-2px); }
+    50% { transform: translateY(-10px) scale(1.02) translateX(2px); }
+    75% { transform: translateY(-10px) scale(1.02) translateX(-1px); }
+    100% { transform: translateY(-10px) scale(1.02) translateX(0); }
+}
+
+.muscle-card:hover {
+    animation: glassShake 0.2s ease-in-out; /* Single high-speed jolt */
 }
 
 /* Biomechanical Scanline Effect */
@@ -1552,10 +1567,10 @@ body.page-exit {
 }
 
 .muscle-card:hover {
-    animation: glassVibrate 0.1s infinite linear; /* High-energy subtle vibration */
+    /* Animation handled via consolidated glassShake keyframes above */
 }
 
-/* Removed neonCardPulse as it conflicts with transformation math */
+/* Removed redundant neonCardPulse and translateZ hacks */
 
 /* Perfect Screen Fit */
 .container {
