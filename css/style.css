@@ -1023,14 +1023,23 @@ h1 {
 
 /* 3D Parallax Depth for Muscle Cards */
 .muscle-card {
-    perspective: 1200px; /* Perspective is enough for translateZ, preserve-3d causes severe overflow bugs in Chrome */
+    perspective: 1200px;
     position: relative;
     overflow: hidden;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transform: translate3d(0,0,0);
-    backdrop-filter: none !important; /* Critical fix: Chrome drops background-image to black if transformed while blurring */
+    backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    will-change: transform; /* Hardware Acceleration Lock */
+}
+
+/* Glass Vibration Keyframes */
+@keyframes glassVibrate {
+    0%   { transform: translateY(-8px) scale(1.02); }
+    25%  { transform: translateY(-8.5px) scale(1.021) rotate(0.1deg); }
+    50%  { transform: translateY(-7.5px) scale(1.019) rotate(-0.1deg); }
+    100% { transform: translateY(-8px) scale(1.02); }
 }
 
 /* Biomechanical Scanline Effect */
@@ -1092,12 +1101,14 @@ h1 {
 }
 
 .glass-card:hover::after {
-    animation: luxuriousSweep 0.8s ease-out forwards;
+    animation: luxuriousSweep 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards; /* Faster, sharper shine */
 }
 
 @keyframes luxuriousSweep {
-    0% { left: -100%; }
-    100% { left: 200%; }
+    0% { left: -110%; transform: skewX(-25deg) scaleX(1); opacity: 0; }
+    30% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { left: 200%; transform: skewX(-25deg) scaleX(2); opacity: 0; }
 }
 
 
@@ -1541,13 +1552,10 @@ body.page-exit {
 }
 
 .muscle-card:hover {
-    animation: neonCardPulse 1.5s infinite alternate ease-in-out;
+    animation: glassVibrate 0.1s infinite linear; /* High-energy subtle vibration */
 }
 
-@keyframes neonCardPulse {
-    0% { border-color: rgba(212, 175, 55, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    100% { border-color: #ffd700; box-shadow: 0 0 40px rgba(255, 215, 0, 0.3), inset 0 0 20px rgba(255, 215, 0, 0.1); }
-}
+/* Removed neonCardPulse as it conflicts with transformation math */
 
 /* Perfect Screen Fit */
 .container {
