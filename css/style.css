@@ -1031,7 +1031,6 @@ h1 {
 
 .glass-card:hover {
     z-index: 100; /* Move to top of stack when hovering */
-    background: rgba(20, 20, 20, 1) !important; /* Force solid color to prevent turning back to black background */
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(212, 175, 55, 0.2);
     border-color: var(--accent-color);
@@ -1047,15 +1046,25 @@ h1 {
 /* Unified Glass Shake Animation - No rotation for absolute stability */
 @keyframes glassShake {
     0% { transform: translateY(-10px) scale(1.02) translateX(0); }
-    25% { transform: translateY(-10px) scale(1.02) translateX(-2px); }
-    50% { transform: translateY(-10px) scale(1.02) translateX(2px); }
-    75% { transform: translateY(-10px) scale(1.02) translateX(-1px); }
+    15% { transform: translateY(-10px) scale(1.02) translateX(-3px); }
+    30% { transform: translateY(-10px) scale(1.02) translateX(3px); }
+    45% { transform: translateY(-10px) scale(1.02) translateX(-2px); }
+    60% { transform: translateY(-10px) scale(1.02) translateX(2px); }
     100% { transform: translateY(-10px) scale(1.02) translateX(0); }
 }
 
 .muscle-card:hover {
-    animation: glassShake 0.2s ease-in-out; /* Single high-speed jolt */
+    animation: glassShake 0.25s cubic-bezier(.36,.07,.19,.97) both;
 }
+
+/* Individual Muscle Card Backdrops - Moved from HTML to prevent render collision */
+.card-chest { background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('../assets/chest_art.png') !important; background-size: cover !important; background-position: center !important; }
+.card-back { background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('../assets/back_art.png') !important; background-size: cover !important; background-position: center !important; }
+.card-legs { background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('../assets/legs_art.png') !important; background-size: cover !important; background-position: center !important; }
+.card-shoulders { background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('../assets/shoulders_art.png') !important; background-size: cover !important; background-position: center !important; }
+.card-core { background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('../assets/core_art.png') !important; background-size: cover !important; background-position: center !important; }
+.card-arms { background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.75)), url('../assets/arms_art.png') !important; background-size: cover !important; background-position: top center !important; }
+.card-nutrition { background: linear-gradient(rgba(10, 10, 10, 0.5), rgba(5, 5, 5, 0.7)), url('../assets/nutrition_art.png') !important; background-size: cover !important; background-position: center !important; }
 
 /* Biomechanical Scanline Effect */
 .muscle-card::before {
@@ -1564,10 +1573,6 @@ body.page-exit {
     33% { opacity: 0.8; transform: scale(1.05) skew(-5deg); filter: hue-rotate(0deg); }
     66% { opacity: 0.4; transform: scale(1.03) skew(3deg); filter: hue-rotate(-90deg); }
     100% { opacity: 0.9; transform: scale(1.06) skew(-2deg); filter: hue-rotate(180deg); }
-}
-
-.muscle-card:hover {
-    /* Animation handled via consolidated glassShake keyframes above */
 }
 
 /* Removed redundant neonCardPulse and translateZ hacks */
