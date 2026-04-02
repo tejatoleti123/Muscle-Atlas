@@ -1053,8 +1053,9 @@ h1 {
     100% { transform: translateY(-10px) scale(1.02) translateX(0); }
 }
 
+/* Removed glassShake animation as per request for clean, unified hover consistency */
 .muscle-card:hover {
-    animation: glassShake 0.25s cubic-bezier(.36,.07,.19,.97) both;
+    animation: none !important;
 }
 
 /* Individual Muscle Card Backdrops - Moved from HTML to prevent render collision */
@@ -1081,9 +1082,10 @@ h1 {
     transition: opacity 0.5s;
 }
 
+/* Removed muscleScan animation as per request for clean, unified hover consistency */
 .muscle-card:hover::before {
-    opacity: 1;
-    animation: muscleScan 4s linear infinite;
+    opacity: 0 !important;
+    animation: none !important;
 }
 
 @keyframes muscleScan {
@@ -1097,20 +1099,11 @@ h1 {
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.muscle-card:hover .muscle-icon {
-    transform: translateY(-8px) scale(1.1);
-}
-
-.muscle-card:hover h3 {
-    transform: translateY(-5px) scale(1.03);
-}
-
-.muscle-card:hover p {
-    transform: translateY(-3px);
-}
-
+.muscle-card:hover .muscle-icon,
+.muscle-card:hover h3,
+.muscle-card:hover p,
 .muscle-card:hover .card-cta {
-    transform: translateY(-4px) scale(1.05);
+    transform: none !important;
 }
 
 .glass-card::after {
