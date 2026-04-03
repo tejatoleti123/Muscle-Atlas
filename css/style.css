@@ -1348,12 +1348,36 @@ body.page-exit {
     100% { background-position: 200% 0; }
 }
 
+.magic-creator-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 8px 20px;
+    background: rgba(212, 175, 55, 0.04);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 40px;
+    color: #d4af37 !important;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation: creatorBreathe 4s infinite alternate ease-in-out;
+}
+
+@keyframes creatorBreathe {
+    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    100% { transform: scale(1.02); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.5); }
+}
+
 .magic-creator-tag:hover {
-    background: rgba(212, 175, 55, 0.08);
-    border-color: rgba(212, 175, 55, 0.4);
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1), 0 0 20px rgba(255, 215, 0, 0.1);
-    color: #FFF3B0;
+    background: rgba(212, 175, 55, 0.1);
+    border-color: #ffd700;
+    transform: translateY(-5px) scale(1.05);
+    letter-spacing: 6px; /* Kinetic Expansion */
+    box-shadow: 0 15px 45px rgba(0,0,0,0.4), 0 0 30px rgba(255, 215, 0, 0.2);
+    color: #FFF3B0 !important;
 }
 
 /* Sparkles (Magical Dust) */

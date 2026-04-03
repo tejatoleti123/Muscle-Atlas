@@ -51,11 +51,20 @@
         // Setup Hovers
         document.querySelectorAll('a, button, .glass-card, .btn-pill-glow, .magic-btn').forEach(el => {
             el.addEventListener('mouseenter', () => {
-                state.scale = 1.3; // Uniform surgical scale for all interactions
+                state.scale = el.closest('.glass-card') ? 1.3 : 1.6;
+                // Special "Focus" effect for the Creator Name
+                if (el.classList.contains('magic-creator-tag')) {
+                    state.scale = 0.8; // Shrink to a concentrated dot
+                    cursorRing.style.backgroundColor = '#ffd700'; // Solid gold dot
+                    cursorRing.style.borderWidth = '0px';
+                } else {
+                    cursorRing.style.backgroundColor = 'rgba(212, 175, 55, 0.15)';
+                    cursorRing.style.borderWidth = '2px';
+                }
+
                 state.hovering = true;
                 cursorRing.style.width = (12 * state.scale) + 'px';
                 cursorRing.style.height = (12 * state.scale) + 'px';
-                cursorRing.style.backgroundColor = 'rgba(212, 175, 55, 0.15)';
                 cursorRing.style.borderColor = '#ffd700'; // brighter gold
                 cursorRing.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.5)';
             });
@@ -65,6 +74,7 @@
                 cursorRing.style.width = '12px';
                 cursorRing.style.height = '12px';
                 cursorRing.style.backgroundColor = 'transparent';
+                cursorRing.style.borderWidth = '2px';
                 cursorRing.style.borderColor = '#d4af37';
                 cursorRing.style.boxShadow = '0 0 8px rgba(212, 175, 55, 0.3)';
             });
