@@ -93,8 +93,28 @@
             setTimeout(() => window.location.href = href, 450);
         });
 
+        // 4. Bio-Mechanical Reveal for Hero Name
+        const heroName = document.getElementById('hero-creator-name');
+        if (heroName) {
+            setTimeout(() => scrambleText(heroName, 'Teja Toleti'), 1000);
+        }
+
         // Start pure logic loop
         requestAnimationFrame(updateLoop);
+    };
+
+    const scrambleText = (el, final) => {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%@#$';
+        let iterations = 0;
+        const interval = setInterval(() => {
+            el.innerText = final.split('').map((char, index) => {
+                if (index < iterations) return final[index];
+                return chars[Math.floor(Math.random() * chars.length)];
+            }).join('');
+            
+            if (iterations >= final.length) clearInterval(interval);
+            iterations += 1/3;
+        }, 30);
     };
 
     const updateLoop = () => {
